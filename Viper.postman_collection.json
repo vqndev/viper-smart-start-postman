@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "15b391cc-f4fb-455a-8cf6-52bf01fd7d2b",
+		"name": "Viper SmartStart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": " Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/auth/login",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/auth/logout",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/search/null?limit=100&deviceFilter=null&sortCol&sortDir=desc&accountId={{accountId}}",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"search",
+						"null"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "deviceFilter",
+							"value": "null"
+						},
+						{
+							"key": "sortCol",
+							"value": null
+						},
+						{
+							"key": "sortDir",
+							"value": "desc"
+						},
+						{
+							"key": "accountId",
+							"value": "{{accountId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\": \"arm_status\",\n\t\"deviceId\": \"{{deviceId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/command",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"command"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\": \"disarm_status\",\n\t\"deviceId\": \"{{deviceId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/command",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"command"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Airtime",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/airtime/current/{{deviceId}}",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"airtime",
+						"current",
+						"{{deviceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Device Status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\": \"req_extended_status\",\n\t\"deviceId\": \"{{deviceId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/command",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"command"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remote Start",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"command\": \"remote_status\",\n\t\"deviceId\": \"{{deviceId}}\"\n}"
+				},
+				"url": {
+					"raw": "https://www.vcp.cloud/v1/devices/command",
+					"protocol": "https",
+					"host": [
+						"www",
+						"vcp",
+						"cloud"
+					],
+					"path": [
+						"v1",
+						"devices",
+						"command"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "68a7dbd1-d119-4aae-843c-514a00869791",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "27801684-6179-4b22-bb35-8c3d9baabf3a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "079b10b6-afe8-42c8-a950-ae4174de4d47",
+			"key": "username",
+			"value": "hi@example.com",
+			"type": "string"
+		},
+		{
+			"id": "7ae9f09b-01d9-4d1a-bbd2-594b7e133e8f",
+			"key": "password",
+			"value": "Password123",
+			"type": "string"
+		},
+		{
+			"id": "a32771db-46e7-4162-a6d3-3af82f01a30f",
+			"key": "accountId",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"id": "1bc436e6-f6a7-4e17-b438-8aebb10c3003",
+			"key": "token",
+			"value": "82j90ajsdfklajsdlfkjaskld",
+			"type": "string"
+		},
+		{
+			"id": "4d5b4643-9262-4783-9e87-6149d35e401e",
+			"key": "deviceId",
+			"value": "83892742938",
+			"type": "string"
+		}
+	]
+}
